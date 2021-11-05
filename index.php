@@ -23,8 +23,9 @@ if (isset($_GET['pong'])) {
 <html>
 <head>
 <style>
-* {
-
+body {
+  background-color: #111;
+  color: #fff;
 }
 
 th {
@@ -101,7 +102,7 @@ $(function() {
                 if(color_red < 16)  line_color += "0";
                 line_color += color_red.toString(16);
                 // green
-                line_color += "00";
+                line_color += "FF";
                 // blue
                 if(color_green < 16)  line_color += "0";
                 line_color += color_green.toString(16);
