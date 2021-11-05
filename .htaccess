@@ -1,0 +1,29 @@
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-Xss-Protection "1; mode=block"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+Header always set X-Content-Type-Options "nosniff"
+
+
+# The following .htaccess snippet is mentioned in the Heroku SSL docs....
+# https://help.heroku.com/J2R1S4T8/can-heroku-force-an-application-to-use-ssl-tls
+# https://stackoverflow.com/a/34065445
+
+#################### BEGIN SNIPPET ####################
+
+RewriteEngine On
+
+# If we receive a forwarded http request from a proxy...
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+
+# ...or just a plain old http request directly from the client
+RewriteCond %{HTTP:X-Forwarded-Proto} =""
+RewriteCond %{HTTPS} !=on
+
+# Redirect to https version
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Put the rest of your rewrite rules here
+
+#################### END SNIPPET ####################
+
+
