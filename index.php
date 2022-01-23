@@ -218,7 +218,7 @@ if (isset($_GET['pong'])) {
     <li>get ready, get set &hellip;</li>
   </ul>
   <footer>
-    Copyright &copy; 2021 Ayrscott, LLC
+    Copyright &copy; 2021-<?= date('Y') ?> Ayrscott, LLC
   </footer>
 </body>
 
